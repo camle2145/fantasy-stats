@@ -2,18 +2,18 @@ package com.fs.fantasy_stats.player;
 
 public class DraftDetails {
 
-    private int draftYear;
+    private Integer draftYear;
     private String college;
-    private int draftRound;
-    private int draftPick;
-    private int draftRookieAdp;
-    private int draft2QBRookieAdp;
+    private Integer draftRound;
+    private Integer draftPick;
+    private Integer draftRookieAdp;
+    private Integer draft2QBRookieAdp;
 
     public DraftDetails() {
     }
 
-    public DraftDetails(int draftYear, String college, int draftRound,
-                        int draftPick, int draftRookieAdp, int draft2QBRookieAdp) {
+    public DraftDetails(Integer draftYear, String college, Integer draftRound,
+                        Integer draftPick, Integer draftRookieAdp, Integer draft2QBRookieAdp) {
         this.draftYear = draftYear;
         this.college = college;
         this.draftRound = draftRound;
@@ -22,11 +22,11 @@ public class DraftDetails {
         this.draft2QBRookieAdp = draft2QBRookieAdp;
     }
 
-    public int getDraftYear() {
+    public Integer getDraftYear() {
         return draftYear;
     }
 
-    public void setDraftYear(int draftYear) {
+    public void setDraftYear(Integer draftYear) {
         this.draftYear = draftYear;
     }
 
@@ -38,35 +38,35 @@ public class DraftDetails {
         this.college = college;
     }
 
-    public int getDraftRound() {
+    public Integer getDraftRound() {
         return draftRound;
     }
 
-    public void setDraftRound(int draftRound) {
+    public void setDraftRound(Integer draftRound) {
         this.draftRound = draftRound;
     }
 
-    public int getDraftPick() {
+    public Integer getDraftPick() {
         return draftPick;
     }
 
-    public void setDraftPick(int draftPick) {
+    public void setDraftPick(Integer draftPick) {
         this.draftPick = draftPick;
     }
 
-    public int getDraftRookieAdp() {
+    public Integer getDraftRookieAdp() {
         return draftRookieAdp;
     }
 
-    public void setDraftRookieAdp(int draftRookieAdp) {
+    public void setDraftRookieAdp(Integer draftRookieAdp) {
         this.draftRookieAdp = draftRookieAdp;
     }
 
-    public int getDraft2QBRookieAdp() {
+    public Integer getDraft2QBRookieAdp() {
         return draft2QBRookieAdp;
     }
 
-    public void setDraft2QBRookieAdp(int draft2QBRookieAdp) {
+    public void setDraft2QBRookieAdp(Integer draft2QBRookieAdp) {
         this.draft2QBRookieAdp = draft2QBRookieAdp;
     }
 }
