@@ -155,7 +155,7 @@ public class Player {
         this.playerId = playerId;
     }
 
-    public Player(String playerId, String name, String position, int jerseyNumber, int teamId, String school, String height, int weight, String birthDate, int age, String experience, boolean isFreeAgent, String lastGamePlayed, String espnHeadShotUrl) {
+    public Player(String playerId, String name, String position, Integer jerseyNumber, Integer teamId, String school, String height, Integer weight, String birthDate, Integer age, String experience, Boolean isFreeAgent, String lastGamePlayed, String espnHeadShotUrl) {
         this.playerId = playerId;
         this.name = name;
         this.position = position;
