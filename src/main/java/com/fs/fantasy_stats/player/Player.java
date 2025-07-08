@@ -1,21 +1,143 @@
 package com.fs.fantasy_stats.player;
 
 import jakarta.persistence.*;
+import java.util.List;
+import java.util.ArrayList;
 
 @Entity
-@Table(name = "player_statistics")
+@Table(name = "players")
 public class Player {
+
     @Id
-    @Column(name = "name", unique = true)
-    private String name;
-    private String firstName;
-    private String lastName;
-    private String mergeName;
-    private String pos;
-    private String team;
-    private Double age;
-    private Double salaryAvg;
-    private Integer faYear;
+    @Column(name = "player_id", unique = true)
+    String playerId;
+    String name;
+    String position;
+    Integer jerseyNumber;
+    Integer teamId;
+    String school;
+    String height;
+    Integer weight;
+    String birthDate;
+    Integer age;
+    String experience;
+    Boolean isFreeAgent;
+    String lastGamePlayed;
+    String espnHeadShotUrl;
+
+    // Relationships to stat entities
+    @OneToMany(mappedBy = "player", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<RushingStats> rushingStats = new ArrayList<>();
+
+    @OneToMany(mappedBy = "player", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<PassingStats> passingStats = new ArrayList<>();
+
+    @OneToMany(mappedBy = "player", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<ReceivingStats> receivingStats = new ArrayList<>();
+
+    @OneToMany(mappedBy = "player", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<PlayerStats> playerStats = new ArrayList<>();
+
+    @OneToMany(mappedBy = "player", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<PlayerInjury> injuries = new ArrayList<>();
+
+    public Player(){}
+
+    public String getEspnHeadShotUrl() {
+        return espnHeadShotUrl;
+    }
+
+    public void setEspnHeadShotUrl(String espnHeadShotUrl) {
+        this.espnHeadShotUrl = espnHeadShotUrl;
+    }
+
+    public String getLastGamePlayed() {
+        return lastGamePlayed;
+    }
+
+    public void setLastGamePlayed(String lastGamePlayed) {
+        this.lastGamePlayed = lastGamePlayed;
+    }
+
+    public Boolean isFreeAgent() {
+        return isFreeAgent;
+    }
+
+    public void setFreeAgent(Boolean freeAgent) {
+        isFreeAgent = freeAgent;
+    }
+
+    public String getExperience() {
+        return experience;
+    }
+
+    public void setExperience(String experience) {
+        this.experience = experience;
+    }
+
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
+    }
+
+    public String getBirthDate() {
+        return birthDate;
+    }
+
+    public void setBirthDate(String birthDate) {
+        this.birthDate = birthDate;
+    }
+
+    public Integer getWeight() {
+        return weight;
+    }
+
+    public void setWeight(Integer weight) {
+        this.weight = weight;
+    }
+
+    public String getHeight() {
+        return height;
+    }
+
+    public void setHeight(String height) {
+        this.height = height;
+    }
+
+    public String getSchool() {
+        return school;
+    }
+
+    public void setSchool(String school) {
+        this.school = school;
+    }
+
+    public Integer getTeam() {
+        return teamId;
+    }
+
+    public void setTeamId(Integer teamId) {
+        this.teamId = teamId;
+    }
+
+    public Integer getJerseyNumber() {
+        return jerseyNumber;
+    }
+
+    public void setJerseyNumber(Integer jerseyNumber) {
+        this.jerseyNumber = jerseyNumber;
+    }
+
+    public String getPos() {
+        return position;
+    }
+
+    public void setPos(String position) {
+        this.position = position;
+    }
 
     public String getName() {
         return name;
@@ -25,208 +147,95 @@ public class Player {
         this.name = name;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getPlayerId() {
+        return playerId;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setPlayerId(String playerId) {
+        this.playerId = playerId;
     }
 
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getMergeName() {
-        return mergeName;
-    }
-
-    public void setMergeName(String mergeName) {
-        this.mergeName = mergeName;
-    }
-
-    public String getPos() {
-        return pos;
-    }
-
-    public void setPos(String pos) {
-        this.pos = pos;
-    }
-
-    public String getTeam() {
-        return team;
-    }
-
-    public void setTeam(String team) {
-        this.team = team;
-    }
-
-    public Double getAge() {
-        return age;
-    }
-
-    public void setAge(Double age) {
-        this.age = age;
-    }
-
-    public Double getSalaryAvg() {
-        return salaryAvg;
-    }
-
-    public void setSalaryAvg(Double salaryAvg) {
-        this.salaryAvg = salaryAvg;
-    }
-
-    public Integer getFaYear() {
-        return faYear;
-    }
-
-    public void setFaYear(Integer faYear) {
-        this.faYear = faYear;
-    }
-
-    public Double getDynoECR() {
-        return dynoECR;
-    }
-
-    public void setDynoECR(Double dynoECR) {
-        this.dynoECR = dynoECR;
-    }
-
-    public Double getDyno2QBECR() {
-        return dyno2QBECR;
-    }
-
-    public void setDyno2QBECR(Double dyno2QBECR) {
-        this.dyno2QBECR = dyno2QBECR;
-    }
-
-    public Double getDynoSD() {
-        return dynoSD;
-    }
-
-    public void setDynoSD(Double dynoSD) {
-        this.dynoSD = dynoSD;
-    }
-
-    public Double getDynpECR() {
-        return dynpECR;
-    }
-
-    public void setDynpECR(Double dynpECR) {
-        this.dynpECR = dynpECR;
-    }
-
-    public Double getDynpSD() {
-        return dynpSD;
-    }
-
-    public void setDynpSD(Double dynpSD) {
-        this.dynpSD = dynpSD;
-    }
-
-    public Double getRdpECR() {
-        return rdpECR;
-    }
-
-    public void setRdpECR(Double rdpECR) {
-        this.rdpECR = rdpECR;
-    }
-
-    public Double getRdpSD() {
-        return rdpSD;
-    }
-
-    public void setRdpSD(Double rdpSD) {
-        this.rdpSD = rdpSD;
-    }
-
-    public DraftDetails getDraftDetails() {
-        return draftDetails;
-    }
-
-    public void setDraftDetails(DraftDetails draftDetails) {
-        this.draftDetails = draftDetails;
-    }
-
-    public PlayStats getPlayStats() {
-        return playStats;
-    }
-
-    public void setPlayStats(PlayStats playStats) {
-        this.playStats = playStats;
-    }
-
-    public PhysicalStats getPhysicalStats() {
-        return physicalStats;
-    }
-
-    public void setPhysicalStats(PhysicalStats physicalStats) {
-        this.physicalStats = physicalStats;
-    }
-
-    public Ids getIds() {
-        return ids;
-    }
-
-    public void setIds(Ids ids) {
-        this.ids = ids;
-    }
-
-    private Double dynoECR;
-    private Double dyno2QBECR;
-    private Double dynoSD;
-    private Double dynpECR;
-    private Double dynpSD;
-    private Double rdpECR;
-    private Double rdpSD;
-
-    @Embedded
-    private DraftDetails draftDetails;
-
-    @Embedded
-    private PlayStats playStats;
-
-    @Embedded
-    private PhysicalStats physicalStats;
-
-    @Embedded
-    private Ids ids;
-
-
-    public Player() {
-    }
-
-    public Player(String name, String firstName, String lastName,
-                  String mergeName, String pos, String team, Double age,
-                  Double salaryAvg, Integer faYear, Double dynoECR,
-                  Double dyno2QBECR, Double dynoSD, Double dynpECR,
-                  Double dynpSD, Double rdpECR, Double rdpSD,
-                  DraftDetails draftDetails, PlayStats playStats,
-                  PhysicalStats physicalStats, Ids ids) {
+    public Player(String playerId, String name, String position, int jerseyNumber, int teamId, String school, String height, int weight, String birthDate, int age, String experience, boolean isFreeAgent, String lastGamePlayed, String espnHeadShotUrl) {
+        this.playerId = playerId;
         this.name = name;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.mergeName = mergeName;
-        this.pos = pos;
-        this.team = team;
+        this.position = position;
+        this.jerseyNumber = jerseyNumber;
+        this.teamId = teamId;
+        this.school = school;
+        this.height = height;
+        this.weight = weight;
+        this.birthDate = birthDate;
         this.age = age;
-        this.salaryAvg = salaryAvg;
-        this.faYear = faYear;
-        this.dynoECR = dynoECR;
-        this.dyno2QBECR = dyno2QBECR;
-        this.dynoSD = dynoSD;
-        this.dynpECR = dynpECR;
-        this.dynpSD = dynpSD;
-        this.rdpECR = rdpECR;
-        this.rdpSD = rdpSD;
-        this.draftDetails = draftDetails;
-        this.playStats = playStats;
-        this.physicalStats = physicalStats;
-        this.ids = ids;
+        this.experience = experience;
+        this.isFreeAgent = isFreeAgent;
+        this.lastGamePlayed = lastGamePlayed;
+        this.espnHeadShotUrl = espnHeadShotUrl;
+    }
+
+    // Getters and setters for relationships
+    public List<RushingStats> getRushingStats() {
+        return rushingStats;
+    }
+
+    public void setRushingStats(List<RushingStats> rushingStats) {
+        this.rushingStats = rushingStats;
+    }
+
+    public List<PassingStats> getPassingStats() {
+        return passingStats;
+    }
+
+    public void setPassingStats(List<PassingStats> passingStats) {
+        this.passingStats = passingStats;
+    }
+
+    public List<ReceivingStats> getReceivingStats() {
+        return receivingStats;
+    }
+
+    public void setReceivingStats(List<ReceivingStats> receivingStats) {
+        this.receivingStats = receivingStats;
+    }
+
+    public List<PlayerStats> getPlayerStats() {
+        return playerStats;
+    }
+
+    public void setPlayerStats(List<PlayerStats> playerStats) {
+        this.playerStats = playerStats;
+    }
+
+    public List<PlayerInjury> getInjuries() {
+        return injuries;
+    }
+
+    public void setInjuries(List<PlayerInjury> injuries) {
+        this.injuries = injuries;
+    }
+
+    // Convenience methods for adding stats
+    public void addRushingStats(RushingStats rushingStats) {
+        this.rushingStats.add(rushingStats);
+        rushingStats.setPlayer(this);
+    }
+
+    public void addPassingStats(PassingStats passingStats) {
+        this.passingStats.add(passingStats);
+        passingStats.setPlayer(this);
+    }
+
+    public void addReceivingStats(ReceivingStats receivingStats) {
+        this.receivingStats.add(receivingStats);
+        receivingStats.setPlayer(this);
+    }
+
+    public void addPlayerStats(PlayerStats playerStats) {
+        this.playerStats.add(playerStats);
+        playerStats.setPlayer(this);
+    }
+
+    public void addInjury(PlayerInjury injury) {
+        this.injuries.add(injury);
+        injury.setPlayer(this);
     }
 }
